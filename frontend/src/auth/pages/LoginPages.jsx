@@ -43,7 +43,7 @@ export const LoginPage = () => {
 
 
             <form className="login_form" onSubmit={onFormSumbit}>
-            <h2 className="login__title">Iniciar Sesión</h2>
+            <h2 className="login__title after:bg-gradient-to-r from-green-500 to-blue-500">Iniciar Sesión</h2>
             <input 
             type="text" 
             placeholder="Mail:" 
@@ -58,7 +58,12 @@ export const LoginPage = () => {
             onChange={handleInputChange}
             value={password} />
             { message && <span>{message.message}</span>}
-            <button type='sumbit' className="login__cta">Sign In</button>
+            
+            <div className="w-1/6 text-center rounded-lg px-px py-px bg-gradient-to-r from-green-500 to-blue-500 shadow-white ">
+   <button type='sumbit' className="login__cta hover:bg-gradient-to-r from-green-500/5 to-blue-500/5 ">Sign In</button>
+    </div>
+            
+            
            
             </form>
            
