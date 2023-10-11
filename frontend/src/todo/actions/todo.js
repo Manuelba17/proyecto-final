@@ -1,11 +1,11 @@
 import { types } from "../types/types";
 
-
+const URL = "https://backend-24vg.onrender.com"
 
 export const startloadTasks = async (dispatch) => {
     let info
 try {
-    const resp = await fetch('http://localhost:3000/api/v1/tasks') 
+    const resp = await fetch(`${URL}/api/v1/tasks`) 
     const data = await resp.json()
     info = data 
 } catch (error) {
@@ -32,7 +32,7 @@ export const addNewTodo = async (todo, dispatch) => {
         let info
 
         try {
-            const resp = await fetch('http://localhost:3000/api/v1/tasks',{
+            const resp = await fetch(`${URL}/api/v1/tasks`,{
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify(todo)
@@ -54,7 +54,7 @@ export const addNewTodo = async (todo, dispatch) => {
 export const deleteTodo = async (id, dispatch) => {
 
     try {
-        const resp = await fetch(`http://localhost:3000/api/v1/tasks/${id}`,{
+        const resp = await fetch(`${URL}/api/v1/tasks/${id}`,{
             method: 'DELETE'})
 
         if(!resp.ok){
@@ -83,7 +83,7 @@ export const updateTodo = async (id, todo, dispatch) => {
         }   
 
    try {
-       const resp = await fetch(`http://localhost:3000/api/v1/tasks/${id}`, {
+       const resp = await fetch(`${URL}/api/v1/tasks/${id}`, {
            method: 'PATCH',
            headers: {'Content-Type': 'application/json'},
            body: JSON.stringify(body)

@@ -16,7 +16,7 @@ const init = () => {
 
 }
 
-const URL_LOGIN = 'http://localhost:3000/api/v1/users/auth'
+const URL_LOGIN = 'https://backend-24vg.onrender.com/api/v1/users/auth'
 
 export const AuthProvide = ({children}) => {
 
