@@ -2,7 +2,8 @@ import { types } from "../types/types";
 
 const initialState = {
     data: [],
-    isLoading: false
+    isLoading: true,
+    msg: ""
 }
 
 
@@ -20,14 +21,16 @@ export const todoReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 data: [...action.payload],
-                isLoading: false
+                isLoading: false,
+                msg: "Todas las tareas"
             }
 
             case types.messageTodo:
                 return {
                     ...state,
                     data: [],
-                    isLoading: false
+                    isLoading: false,
+                    msg: 'Todas las tareas'
                 }
 
             case types.deleteTodo:
@@ -42,6 +45,26 @@ export const todoReducer = ( state = initialState, action ) => {
                     ...state,
                     data: state.data.map( todo => todo._id === action.payload._id ? action.payload : todo),
                     isLoading: false
+                }
+
+            case types.startLoad:
+                return {
+                    ...state,
+                    isLoading: true
+                }
+            case types.filterPending:
+                return {
+                    ...state,
+                    data: [...action.payload],
+                    isLoading: false,
+                    msg: 'Tareas pendientes'
+                }
+            case types.filterComplete:
+                return{
+                    ...state,
+                    data: [...action.payload],
+                    isLoading: false,
+                    msg: 'Tareas completadas'
                 }
         
             default:

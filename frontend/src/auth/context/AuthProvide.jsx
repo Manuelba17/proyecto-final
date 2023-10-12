@@ -11,7 +11,8 @@ const init = () => {
 
   return{
     user,
-    logged: !!user
+    logged: !!user,
+    isLoading: false
   }
 
 }
@@ -24,7 +25,11 @@ export const AuthProvide = ({children}) => {
     const navigate = useNavigate();
     const [state, dispatch] = useReducer(authReducer, {}, init)  
 
-    const login =  async(mail, password) =>{
+    const login =  async(mail, password, reset) =>{
+
+      dispatch({
+        type: types.starLoad
+      })
       
       let info
       const credentials = {
@@ -47,7 +52,7 @@ export const AuthProvide = ({children}) => {
           type: types.message,
           payload: info
         }
-
+        reset()
        return dispatch(action)
 
       }

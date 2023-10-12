@@ -5,4 +5,7 @@ export const types = {
     messageTodo: '[TODO] message',
     deleteTodo: '[TODO] delete',
     updateTodo: '[TODO] update',
+    startLoad: '[TODO] loading',
+    filterComplete: '[TODO] filterComplete',
+    filterPending: '[TODO] filterPending',
 }

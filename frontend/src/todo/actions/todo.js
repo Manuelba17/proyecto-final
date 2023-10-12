@@ -3,6 +3,11 @@ import { types } from "../types/types";
 const URL = "https://backend-24vg.onrender.com"
 
 export const startloadTasks = async (dispatch) => {
+    
+    dispatch({
+        type: types.startLoad
+    })
+
     let info
 try {
     const resp = await fetch(`${URL}/api/v1/tasks`) 
@@ -11,13 +16,13 @@ try {
 } catch (error) {
     console.log(error);    
 }
-    if(info?.message){
-        const messageTodo = {
+     if(info?.message){
+        const action = {
             type: types.messageTodo,
             payload: info
         }
-        return dispatch(messageTodo)
-    }   
+        return dispatch(action)
+    }    
     const loadTodo = {
         type: types.loadTodo,
         payload: info
@@ -110,6 +115,51 @@ export const updateTodo = async (id, todo, dispatch) => {
         }
 
         dispatch(update)
+}
+
+export const pendingTasks = async (dispatch) =>{
+    
+
+    dispatch({
+        types: types.startLoad
+    })
+     
+   
+   
+
+    fetch(`${URL}/api/v1/tasks?isDone=false`)
+    .then(resp => resp.json())
+    .then(data => {
+        const action ={
+            type: types.filterPending,
+            payload: data
+        }
+
+        dispatch(action)
+    }).catch(error => console.log('Error en filtro'+ error)) 
+
+
+}
+
+export const completedTasks = async (dispatch) =>{
+
+    dispatch({
+        type: types.startLoad
+    })
+
+    
+
+
+    fetch(`${URL}/api/v1/tasks?isDone=true`)
+    .then(resp => resp.json())
+    .then(data => {
+        const action ={
+            type: types.filterComplete,
+            payload: data
+        }
+
+        dispatch(action)
+    }).catch(error => console.log('Error en filtro'+ error))
 }
 
 

@@ -4,13 +4,15 @@
 import {TaskCard } from "./TaskCard"
 
 // eslint-disable-next-line react/prop-types
-export const ListTasks = ({data , onDeleteTodo, onUpdateTodo}) => {
+export const ListTasks = ({data, onDeleteTodo, onUpdateTodo, msg}) => {
 
  
  
   return (
     <>
-        {data.length === 0 ? <h1 className='title_task'>No Hay tareas</h1> 
+    <section>
+        {msg && <h1>{msg}</h1>}
+        {data.length === 0 ? <h1 className='title_task'>No hay tareas</h1> 
         : 
         <ul className="list_task">
             {data.map((task) =>(
@@ -23,7 +25,7 @@ export const ListTasks = ({data , onDeleteTodo, onUpdateTodo}) => {
             ))}
 
         </ul> } 
-    
+        </section>
     </>
   )
 }

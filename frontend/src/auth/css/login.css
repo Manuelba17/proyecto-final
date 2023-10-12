@@ -10,13 +10,7 @@
     --font: 'Inter', sans-serif;
     --font-comforter:'Comforter Brush',  sans-serif;
     --login-row: 1fr;
-    --clip: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-    --color-primary: #5050f0;
-    --color-principal: #1b1b1e;
-    
-
-
-
+    --clip: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);    
 }
 
 section{
