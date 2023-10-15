@@ -44,7 +44,7 @@ export const todoReducer = ( state = initialState, action ) => {
                 return {
                     ...state,
                     data: state.data.map( todo => todo._id === action.payload._id ? action.payload : todo),
-                    isLoading: false
+                    
                 }
 
             case types.startLoad:

@@ -33,7 +33,7 @@ try {
 }
 
 
-export const addNewTodo = async (todo, dispatch) => {        
+export const addNewTodo = async (todo, dispatch, closeModal) => {        
         let info
 
         try {
@@ -52,11 +52,17 @@ export const addNewTodo = async (todo, dispatch) => {
             type: types.addTodo,
             payload: info
         }
+       
         dispatch(addTodo)
+        closeModal()
 }
 
 
 export const deleteTodo = async (id, dispatch) => {
+
+    dispatch({
+        type: types.startLoad
+    })
 
     try {
         const resp = await fetch(`${URL}/api/v1/tasks/${id}`,{
@@ -82,11 +88,15 @@ export const deleteTodo = async (id, dispatch) => {
 }
 
 export const updateTodo = async (id, todo, dispatch) => {
+
+
+
     let info    
     const body = {
             isDone: todo
         }   
 
+        
    try {
        const resp = await fetch(`${URL}/api/v1/tasks/${id}`, {
            method: 'PATCH',
@@ -106,15 +116,10 @@ export const updateTodo = async (id, todo, dispatch) => {
     console.log(error);
    }
 
-    
-        
-
-        const update = {
+        dispatch({
             type: types.updateTodo,
             payload: info
-        }
-
-        dispatch(update)
+        })
 }
 
 export const pendingTasks = async (dispatch) =>{

@@ -1,7 +1,7 @@
 import useForm from "../../customsHooks/useForm"
 
 
-export const TodoAdd = ({onNewTodo}) => {
+export const TodoAdd = ({onNewTodo, closeModal}) => {
 
     
 
@@ -22,8 +22,9 @@ export const TodoAdd = ({onNewTodo}) => {
         user: "65175c4eabf669d85b8d96f5"
     }
 
-    onNewTodo(newTodo)
+    onNewTodo(newTodo, closeModal)
     reset()
+    
     }
   
   return (

@@ -4,4 +4,8 @@ export const types = {
     logout: '[Auth] Logout',
     message: '[Auth] Message',
     starLoad: '[Auth] StarLoad',
+
+    openModal: '[Modal] Open',
+    closeModal: '[Modal] Close',
+
 }
