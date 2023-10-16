@@ -3,6 +3,23 @@ const User = require('../models/user');
 class userServices {
 
     static async create({input}){
+        const {nickName, mail} = input
+
+        const user = await User.findOne({nickName: nickName})
+        const userMail = await User.findOne({mail: mail})
+
+        if (user){
+            return {
+                message: 'Usuario ya existe en el sistema'
+            }
+        }
+
+        if (userMail){
+            return {
+                message: 'Email ya existe en el sistema'
+            }
+        }
+
         return await User.create(input);
     }
 
