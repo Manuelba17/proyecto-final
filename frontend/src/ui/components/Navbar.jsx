@@ -5,7 +5,7 @@ import '../css/navbar.css'
 
 export const Navbar = () => {
   
-  const {onLogoutApp, state} = useContext(AuthContext)
+  const {onLogoutApp} = useContext(AuthContext)
 
   
   const navigate = useNavigate();
@@ -17,14 +17,14 @@ export const Navbar = () => {
 
   return (
     <>
-     <nav className='flex px-28 py-6'>
+     <nav className='flex px-28 py-6 md:px-0  '>
 
         <div className='flex-grow text-center'>
           <h1 className='text-xl'>Bienvenido al modulo de tareas</h1>
         </div>
 
         <div>
-          <button className='border border-red-600 px-4 py-1 rounded-md hover:bg-red-600/25' onClick={onLogout}>
+          <button className='border border-red-600 px-4 py-1 rounded-md hover:bg-red-600/25 md:hidden' onClick={onLogout}>
           Sign out
           </button>
         </div>

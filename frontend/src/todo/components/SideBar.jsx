@@ -12,7 +12,7 @@ export const SideBar = ({dispatch}) => {
 
   return (
 
-    <div className='bg-slate-200 w-1/5 h-full flex flex-col gap-5 justify-between'>
+    <div className='bg-slate-200 w-1/5 h-full flex flex-col gap-5 justify-between md:hidden xl:w-1/3'>
 
       <span className='mt-10 bg text-center pb-5 border-b-2 border-b-violet-800 text-black'>NikcName</span>
 

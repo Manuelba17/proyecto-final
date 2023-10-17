@@ -36,19 +36,19 @@ export const LoginPage = () => {
     return (
         <>
 
-        <section className="login">
-            <figure className="login__picture">
+        <section className="login sm:flex sm:flex-col">
+            <figure className="login__picture h-full w-1/2 sm:w-full">
                 <img src={image} className="login__img"/>     
             </figure>
 
 
-            <form className="login_form" onSubmit={onFormSumbit}>
+            <form className="login_form sm:w-full w-1/2" onSubmit={onFormSumbit}>
             <h2 className="login__title after:bg-gradient-to-r from-green-500 to-blue-500">Iniciar Sesión</h2>
 
             <input 
             type="email" 
             placeholder="Mail:" 
-            className="login__input" autoFocus
+            className="login__input w-1/2 md:w-10/12" autoFocus
             name='mail'
             value={mail}
             onChange={handleInputChange} 
@@ -56,14 +56,14 @@ export const LoginPage = () => {
 
             <input type="password" 
             placeholder="Password:" 
-            className="login__input"
+            className="login__input w-1/2 md:w-10/12"
             name='password'
             onChange={handleInputChange}
             value={password} 
             required/>
              { !isLoading && <span>{message?.message}</span>} 
             
-            <div className="w-1/6 text-center rounded-lg px-px py-px bg-gradient-to-r from-green-500 to-blue-500 shadow-white ">
+            <div className="w-1/6 text-center rounded-lg px-px py-px bg-gradient-to-r from-green-500 to-blue-500 shadow-white md:w-10/12">
                 { isLoading ?  <button type="sumbit" className="login__cta hover:bg-gradient-to-r from-green-500/5 to-blue-500/5" disabled>
                 <svg className="animate-spin mx-auto h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">    
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -72,7 +72,7 @@ export const LoginPage = () => {
   
 </button>
                 :
-                <button type='sumbit' className="login__cta hover:bg-gradient-to-r from-green-500/5 to-blue-500/5 ">Sign In</button>}
+                <button type='sumbit' className="login__cta hover:bg-gradient-to-r from-green-500/5 to-blue-500/5 md:w-10/12">Sign In</button>}
                 
             
     </div>

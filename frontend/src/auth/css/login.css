@@ -56,8 +56,7 @@ section{
     justify-content:center;
     align-items: center;
     position: relative;
-    height: 100%;
-    width: 50%;    
+        
 }
 
 .register_picture::before{
@@ -76,7 +75,6 @@ section{
    display: flex;
    flex-direction: column;
    align-items: center;
-   width: 50%;
    height: 100%;
    gap: 1rem;
    justify-content: center;   
@@ -102,8 +100,8 @@ section{
     border:none;
     outline:none;
     border-bottom: 1px solid gray;
+    
     padding: .5rem 0;
-    width: 50%;
     background-color: var(--color-principal);
     
 }
