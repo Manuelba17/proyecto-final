@@ -2,15 +2,7 @@ const taskServices = require("../services/taskServices");
 
 
 class taskController {
-    static getAllTasks(req, res) {
-        const params = req.query
-        
-        if(Object.keys(params).length > 0){
-            return taskServices.search({params}).then(task => {
-                return res.status(200).send(task);
-            })
-            .catch(err => res.status(500).send({message: 'Internal Server Error'+ err}))
-        }
+    static getAllTasks(req, res) {       
 
          taskServices.getAll().then(tasks => {
             if (tasks.length === 0) return res.status(404).send({message: 'Tasks not found'})
@@ -21,7 +13,14 @@ class taskController {
 
     static getAllTasksByUser (req, res) {
         const {id} = req.params
+        const params = req.query
 
+        if(Object.keys(params).length > 0){
+            return taskServices.search({params}).then(task => {
+                return res.status(200).send(task);
+            })
+            .catch(err => res.status(500).send({message: 'Internal Server Error'+ err}))
+        }
         
         taskServices.getAllByUser({id}).then(tasks => {
             if (tasks.length === 0) return res.status(404).send({message: 'Tasks not found'})
