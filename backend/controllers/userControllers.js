@@ -55,7 +55,12 @@ class userControllers {
 
             const token = jwt.sign({_id, mail, nickName}, process.env.SECRET_KEY, {expiresIn: '60m'})
 
-            return res.status(200).send({message: token})
+            return res.status(200).send({
+                token,
+                mail,
+                nickName,
+                _id
+            })
 
         })
     }
