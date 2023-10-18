@@ -10,8 +10,10 @@ class taskServices {
         return await Task.find({user: id}).populate({path: 'user', select: 'nickName mail'})           
     }
 
-    static async search({params}){
-        return await Task.find(params)
+    static async search({params ,id}){
+        console.log(id);
+        
+        return await Task.where({isDone: params.isDone}).and({user: id}).populate({path: 'user', select: 'nickName mail'})
     }
 
     static  async create ({input}){

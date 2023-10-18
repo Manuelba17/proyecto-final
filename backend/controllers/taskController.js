@@ -16,7 +16,7 @@ class taskController {
         const params = req.query
 
         if(Object.keys(params).length > 0){
-            return taskServices.search({params}).then(task => {
+            return taskServices.search({params, id}).then(task => {
                 return res.status(200).send(task);
             })
             .catch(err => res.status(500).send({message: 'Internal Server Error'+ err}))
