@@ -10,7 +10,11 @@ export const HomePage = () => {
 
    <section className="max-w-7xl mx-auto h-screen">
    <NavHome />
-   
+
+   <h1 className="text-center -mt-10 text-3xl font-serif md:mt-8"> Tus notas al instante</h1>
+    
+  
+
    </section>
    </main>
   )

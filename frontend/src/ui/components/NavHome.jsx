@@ -8,15 +8,10 @@ export const NavHome = () => {
 
   return (
     <>
-    <nav className="flex pt-7 " >
+    <nav className="flex pt-7 justify-between md:flex-col md:gap-4 " >
 
-      <div >
-      
-       <img src={image} className="h-16" alt="" />
-      </div>
-
-      <div className="flex-grow ">
-        <h5 className="text-center font-extrabold ">Bienvenido al modulo de tareas</h5>
+      <div >      
+       <img src={image} className="h-24" alt="" />
       </div>
 
       <div className="flex">

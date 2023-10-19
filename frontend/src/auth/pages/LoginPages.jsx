@@ -36,13 +36,14 @@ export const LoginPage = () => {
     return (
         <>
 
-        <section className="login sm:flex sm:flex-col">
-            <figure className="login__picture h-full w-1/2 sm:w-full">
+        <section className="login sm:flex sm:flex-col-reverse">
+
+            <figure className="login__picture h-full w-1/2 sm:opacity-0 ">
                 <img src={image} className="login__img"/>     
             </figure>
 
 
-            <form className="login_form sm:w-full w-1/2" onSubmit={onFormSumbit}>
+            <form className="login_form sm:w-full w-1/2 " onSubmit={onFormSumbit}>
             <h2 className="login__title after:bg-gradient-to-r from-green-500 to-blue-500">Iniciar Sesión</h2>
 
             <input 

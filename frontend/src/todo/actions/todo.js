@@ -2,7 +2,7 @@ import { types } from "../types/types";
 
 const URL = "https://backend-24vg.onrender.com"
 
-export const startloadTasks = async (dispatch) => {
+export const startloadTasks = async (dispatch, id) => {
     
     dispatch({
         type: types.startLoad
@@ -10,7 +10,7 @@ export const startloadTasks = async (dispatch) => {
 
     let info
 try {
-    const resp = await fetch(`${URL}/api/v1/tasks`) 
+    const resp = await fetch(`${URL}/api/v1/tasks/${id}`) 
     const data = await resp.json()
     info = data 
 } catch (error) {
@@ -34,8 +34,13 @@ try {
 
 
 export const addNewTodo = async (todo, dispatch, closeModal) => {        
-        let info
+        
+    dispatch({
+        type: types.startLoad
+    })
 
+        let info
+        
         try {
             const resp = await fetch(`${URL}/api/v1/tasks`,{
                 method: 'POST',
@@ -45,6 +50,8 @@ export const addNewTodo = async (todo, dispatch, closeModal) => {
     
             const data = await resp.json()
             info = data
+
+            console.log(info);
         } catch (error) {
             console.log(error);            
         }       
@@ -122,7 +129,7 @@ export const updateTodo = async (id, todo, dispatch) => {
         })
 }
 
-export const pendingTasks = async (dispatch) =>{
+export const pendingTasks = async (dispatch, id) =>{
     
 
     dispatch({
@@ -132,7 +139,7 @@ export const pendingTasks = async (dispatch) =>{
    
    
 
-    fetch(`${URL}/api/v1/tasks?isDone=false`)
+    fetch(`${URL}/api/v1/tasks/${id}?isDone=false`)
     .then(resp => resp.json())
     .then(data => {
         const action ={
@@ -146,7 +153,7 @@ export const pendingTasks = async (dispatch) =>{
 
 }
 
-export const completedTasks = async (dispatch) =>{
+export const completedTasks = async (dispatch, id) =>{
 
     dispatch({
         type: types.startLoad
@@ -155,7 +162,7 @@ export const completedTasks = async (dispatch) =>{
     
 
 
-    fetch(`${URL}/api/v1/tasks?isDone=true`)
+    fetch(`${URL}/api/v1/tasks/${id}?isDone=true`)
     .then(resp => resp.json())
     .then(data => {
         const action ={

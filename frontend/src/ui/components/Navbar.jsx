@@ -20,7 +20,7 @@ export const Navbar = () => {
      <nav className='flex px-28 py-6 md:px-0  '>
 
         <div className='flex-grow text-center'>
-          <h1 className='text-xl'>Bienvenido al modulo de tareas</h1>
+          <h1 className='text-xl sm:ml-4'>Bienvenido al modulo de tareas</h1>
         </div>
 
         <div>

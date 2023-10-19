@@ -28,6 +28,8 @@ export const AuthProvide = ({children}) => {
     const [modalState, modalDispatch] = useReducer(modalReducer, false)
 
 
+
+
     const login =  async(mail, password, reset) =>{
 
       dispatch({

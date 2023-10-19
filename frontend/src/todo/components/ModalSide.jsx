@@ -6,7 +6,7 @@ import { completedTasks, pendingTasks, startloadTasks } from "../actions/todo"
 
 export const ModalSide = ({setSide, dispatch}) => {
 
-  const {onLogoutApp, modalOpen} = useContext(AuthContext)
+  const {onLogoutApp, modalOpen, user} = useContext(AuthContext)
 
   const navigate = useNavigate();
 
@@ -24,19 +24,19 @@ export const ModalSide = ({setSide, dispatch}) => {
             <h1 className="text-2xl">Menu</h1>
 
 <div >
-    <div className='w-full gap-5 p-2 cursor-pointer flex place-items-center rounded-xl' onClick={() => {startloadTasks(dispatch)
+    <div className='w-full gap-5 p-2 cursor-pointer flex place-items-center rounded-xl' onClick={() => {startloadTasks(dispatch, user._id)
     setSide(false)}}>
       <i className="fa-solid fa-house fa-lg"></i>
       <span className=' text-lg'>Todas mis tareas</span>
     </div>
 
-    <div className='w-full gap-5 p-2 cursor-pointer flex place-items-center rounded-xl' onClick={() =>{pendingTasks(dispatch) 
+    <div className='w-full gap-5 p-2 cursor-pointer flex place-items-center rounded-xl' onClick={() =>{pendingTasks(dispatch, user._id) 
       setSide(false)}}>
       <i className=" fa-solid fa-triangle-exclamation fa-lg"></i>
       <span className=' text-lg'>Pendientes</span>
     </div>
 
-    <div className='w-full gap-5 p-2 cursor-pointer flex place-items-center rounded-xl' onClick={() => {completedTasks(dispatch)
+    <div className='w-full gap-5 p-2 cursor-pointer flex place-items-center rounded-xl' onClick={() => {completedTasks(dispatch, user._id)
     setSide(false)}}>
       <i className=" fa-regular fa-circle-check fa-lg"></i>
       <span className=' text-lg'>Completadas</span>

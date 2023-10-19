@@ -12,7 +12,7 @@ import { ModalSide } from '../components/modalSide'
 
 export const Dashboard = () => {
 
-  const {modalState, modalClose} = useContext(AuthContext)
+  const {modalState, modalClose, user} = useContext(AuthContext)
   
   const [side, setSide] = useState(false)
 
@@ -27,7 +27,7 @@ const [data, dispatch] = useReducer(todoReducer,  initialState)
 
 
 useEffect(() => {        
-  startloadTasks(dispatch);
+  startloadTasks(dispatch, user._id);
   }, [])
 
  const handleNewTodo = (todo, closeModal) =>{
@@ -53,12 +53,12 @@ return (
   <>
     < main className='flex h-screen fondo' >
 
-    {modalState && <ModalAddTask onNewTodo={handleNewTodo} closeModal={modalClose} />}
-    {side && <ModalSide setSide={setSide} dispatch={dispatch} />}
+    {modalState && <ModalAddTask onNewTodo={handleNewTodo} closeModal={modalClose} isLoading={data.isLoading} />}
+    {side && <ModalSide setSide={setSide} dispatch={dispatch}  />}
    
     <SideBar dispatch={dispatch} />
 
-    <div className='absolute left-8 top-8 hidden md:inline' onClick={() => modalSite()}>
+    <div className='absolute left-8 top-8 hidden md:inline sm:left-3' onClick={() => modalSite()}>
     <i className="fa-solid fa-bars fa-2xl"></i>
     </div>
   
